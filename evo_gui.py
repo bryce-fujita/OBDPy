@@ -4,7 +4,7 @@ import pygame, time, os
 from pygame.locals import *
 
 #Helper function used to display strings on screen
-def drawText(string, x, y)
+def drawText(string, x, y):
     text = pyfont.render(string, TRUE, config.BLACK)
     textRect = text.get_rect()
     textRect.centerx = windowSurface.get_rect().centerx + x
@@ -12,7 +12,7 @@ def drawText(string, x, y)
     windowSurface.blit(text, textRect)
 
 #Start ECU thread
-ecu.ecuThread()
+#ecu.ecuThread()
 
 #Prevents program from progressing until ECU is ready
 while not config.ecuReady:
@@ -28,7 +28,8 @@ else:
     windowSurface = pygame.display.set_mode(config.RESOLUTION,0,32)
 
 #Setup Fonts
-pyfont = pygame.font.Font("/home/pi/font/ASL_light.ttf",30)
+pyfont = pygame.font.SysFont('carlito',30)
+
 
 #Setup the caption for the window
 pygame.display.set_caption('Fuji Code\'s Gauge Display')

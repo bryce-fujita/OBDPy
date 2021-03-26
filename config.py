@@ -2,10 +2,12 @@
 
 # Globals
 
-ecuReady = False
+ecuReady = True
 
-RESLOLUTION = (800,480)
+RESOLUTION = (800,480)
 
 BLACK = (0,0,0)
 
 WHITE = (255,255,255)
+
+piTFT = False

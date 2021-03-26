@@ -12,8 +12,8 @@ engineLoad = 0
 boost = 0
 connection = None
 
-class ecuThead(Thread):
-    def __init__(self)
+class ecuThread(Thread):
+    def __init__(self):
         Thread.__init__(self)
         self.daemon = True
         self.start()
@@ -21,10 +21,10 @@ class ecuThead(Thread):
     def run(self):
         global connection
         ports = obd.scan_serial()
-        print ports
+        print(ports)
 
         # Connect to ECU
-        connection = obd.Async("/dev/ttyUSB0",None,"3", fast=True)
+        connection = obd.Async()
 
         # Setup which values to monitor.
         connection.watch(obd.commands.RPM, callback=self.new_rpm)
@@ -47,11 +47,11 @@ class ecuThead(Thread):
             speed = r.value.to("mph")
             speed = int(round(speed.magnitude))
 
-        def new_engine_load(self, r)
+        def new_engine_load(self, r):
             global engineLoad
             engineLoad = int(round(r.value.magnitude))
 
-        def new_boost(self, r)
+        def new_boost(self, r):
             global boost
             boost = int(round(r.value.magnitude) * 0.145038)
                 
