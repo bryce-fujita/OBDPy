@@ -11,3 +11,9 @@ BLACK = (0,0,0)
 WHITE = (255,255,255)
 
 piTFT = False
+
+GHEIGHT = 20
+
+GWIDTH = 100
+
+GCOLOR = (18,201,255)

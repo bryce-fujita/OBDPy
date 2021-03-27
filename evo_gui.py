@@ -11,6 +11,25 @@ def drawText(string, x, y):
     textRect.centery = windowSurface.get_rect().centery + y
     windowSurface.blit(text, textRect)
 
+def drawGauge(x, y, val, xmin, xmax):
+    ##Get Window dimensions
+    pos = windowSurface.get_rect()
+    ##Draw background to gauge
+    gaugeBg = pygame.Surface((config.GWIDTH,config.GHEIGHT))
+    gaugeBg.fill(GBGCOLOR)
+    rectBg = gaugeBg.get_rect(center = (pos.centerx + x, pos.centery + y))
+    ##Bar to show how full the gauge is
+    perc = val/xmax
+    if perc > 1:
+        perc = 1
+    gaugeC = pygame.Surface((config.GWIDTH*perc,config.GHEIGHT))
+    gaugeC.fill(GCOLOR)
+    rectC = gaugeBg.get_rect(center = (pos.centerx + x, pos.centery + y))
+    ##Gauge Border
+    windowSurface.blit(gaugeBg,rectBg)
+    windowSurface.blit(gaugeC,rectC)
+    pygame.draw.rect(windowSurface,config.WHITE,(config.GWIDTH,config.GHEIGHT,pos.centerx + x, pos.centery + y))
+
 #Setup Clock
 clock = pygame.time.Clock()
 
@@ -64,7 +83,8 @@ while True:
 
     #Boost#
     drawText(str(ecu.boost) + " psi", 0, 200)
-
+    drawGauge(0,225,ecu.boost,0,30)
+    
     dt = clock.tick()
 
     pygame.display.update()
