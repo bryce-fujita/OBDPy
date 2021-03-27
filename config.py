@@ -4,6 +4,8 @@
 
 ecuReady = True
 
+maxGaugeRpm = 7000
+
 RESOLUTION = (800,480)
 
 BLACK = (0,0,0)
