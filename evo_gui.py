@@ -16,19 +16,21 @@ def drawGauge(x, y, val, xmin, xmax):
     pos = windowSurface.get_rect()
     ##Draw background to gauge
     gaugeBg = pygame.Surface((config.GWIDTH,config.GHEIGHT))
-    gaugeBg.fill(GBGCOLOR)
+    gaugeBg.fill(config.GBGCOLOR)
     rectBg = gaugeBg.get_rect(center = (pos.centerx + x, pos.centery + y))
     ##Bar to show how full the gauge is
     perc = val/xmax
     if perc > 1:
         perc = 1
     gaugeC = pygame.Surface((config.GWIDTH*perc,config.GHEIGHT))
-    gaugeC.fill(GCOLOR)
+    gaugeC.fill(config.GCOLOR)
     rectC = gaugeBg.get_rect(center = (pos.centerx + x, pos.centery + y))
     ##Gauge Border
+    gaugeB = pygame.Surface((config.GWIDTH,config.GHEIGHT))
+    rectB = gaugeB.get_rect(center = (pos.centerx + x, pos.centery + y))
     windowSurface.blit(gaugeBg,rectBg)
     windowSurface.blit(gaugeC,rectC)
-    pygame.draw.rect(windowSurface,config.WHITE,(config.GWIDTH,config.GHEIGHT,pos.centerx + x, pos.centery + y))
+    pygame.draw.rect(windowSurface,config.WHITE,rectB,2)
 
 #Setup Clock
 clock = pygame.time.Clock()
@@ -73,13 +75,13 @@ while True:
     drawText("RPMs: "+str(ecu.rpm),0,0)
 
     #Speed#
-    drawText("Speed: " +str(ecu.speed) + " mph",170,0)
+    drawText("Speed: " +str(ecu.speed) + " mph",250,0)
 
     #Coolant Temp#
-    drawText(str(ecu.coolantTemp) + "\xb0C", 170,50)
+    drawText(str(ecu.coolantTemp) + "\xb0C", 250,50)
 
     #Engine Load#
-    drawText(str(ecu.engineLoad) + " %", -170,0)
+    drawText(str(ecu.engineLoad) + " %", -250,0)
 
     #Boost#
     drawText(str(ecu.boost) + " psi", 0, 200)

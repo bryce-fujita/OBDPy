@@ -5,11 +5,11 @@ import config
 
 #Globals
 
-rpm = 0
+rpm = 2738
 speed = 0
 coolantTemp = 0
 engineLoad = 0
-boost = 0
+boost = 10
 connection = None
 
 class ecuThread(Thread):

@@ -14,7 +14,7 @@ piTFT = False
 
 GHEIGHT = 20
 
-GWIDTH = 100
+GWIDTH = 200
 
 GBGCOLOR = (0,51,66)
 
