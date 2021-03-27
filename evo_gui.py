@@ -5,11 +5,14 @@ from pygame.locals import *
 
 #Helper function used to display strings on screen
 def drawText(string, x, y):
-    text = pyfont.render(string, TRUE, config.BLACK)
+    text = pyfont.render(string, True, config.WHITE)
     textRect = text.get_rect()
     textRect.centerx = windowSurface.get_rect().centerx + x
     textRect.centery = windowSurface.get_rect().centery + y
     windowSurface.blit(text, textRect)
+
+#Setup Clock
+clock = pygame.time.Clock()
 
 #Start ECU thread
 #ecu.ecuThread()
@@ -26,10 +29,10 @@ if config.piTFT:
     windowSurface = pygame.display.set_mode(config.RESOLUTION)
 else:
     windowSurface = pygame.display.set_mode(config.RESOLUTION,0,32)
+    pygame.init()
 
 #Setup Fonts
-pyfont = pygame.font.SysFont('carlito',30)
-
+pyfont = pygame.font.Font('/home/pi/fonts/HighlandGothicFLF.ttf',30)
 
 #Setup the caption for the window
 pygame.display.set_caption('Fuji Code\'s Gauge Display')
