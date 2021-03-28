@@ -36,7 +36,7 @@ def drawGauge(x, y, val, xmin, xmax):
 clock = pygame.time.Clock()
 
 #Start ECU thread
-#ecu.ecuThread()
+ecu.ecuThread()
 
 #Prevents program from progressing until ECU is ready
 while not config.ecuReady:
